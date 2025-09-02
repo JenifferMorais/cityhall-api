@@ -19,13 +19,9 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.foo.cityhall.model.dto.BaseEntityDTO;
-import com.foo.cityhall.model.dto.user.UserDTO;
 import com.foo.cityhall.model.entity.BaseEntity;
-import com.foo.cityhall.model.entity.user.User;
 import com.foo.cityhall.model.mapper.BaseMapper;
-import com.foo.cityhall.model.mapper.UserMapper;
 import com.foo.cityhall.repository.BaseRepository;
-import com.foo.cityhall.service.BaseService;
 
 @SpringBootTest
 public class BaseServiceTester {
