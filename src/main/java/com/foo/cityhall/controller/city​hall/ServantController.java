@@ -20,6 +20,7 @@ public class ServantController extends BaseController<Servant, ServantDTO, Integ
 		super(service);
 	}
 
+	@Override
 	@PostMapping
 	public ServantDTO create(@RequestBody @Valid ServantDTO dto) {
 		return service.create(dto);

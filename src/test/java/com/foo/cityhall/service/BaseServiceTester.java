@@ -55,9 +55,9 @@ public class BaseServiceTester {
 	@Test
 	void testFindByIdNotFound() {
 		when(repository.findById(anyInt())).thenReturn(Optional.of(new TestEntity()));
-		 
+
 		when(mapper.toDto(any(TestEntity.class))).thenReturn(new TestDTO());
-		 
+
 		TestDTO result = service.read(1);
 
 		assertNotNull(result);

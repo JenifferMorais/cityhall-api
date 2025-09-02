@@ -19,23 +19,23 @@ import lombok.Data;
 @Data
 @Table(name = "servants", schema = "city_hall")
 public class Servant extends BaseEntity<Integer> {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id; 
-	
+	private Integer id;
+
 	@Column(name = "name", length = 60, nullable = false)
 	private String name;
-	
+
 	@Column(name = "email", length = 255, nullable = false)
 	private String email;
-	
+
 	@Column(name = "birthday")
 	private LocalDate birthday;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "secretariat_id", referencedColumnName = "id", nullable = false)
-	
+
 	private Secretariat secretariat;
 
 	public Servant() {

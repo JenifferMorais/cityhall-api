@@ -1,8 +1,10 @@
 package com.foo.cityhall.controller;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
+import static org.mockito.Mockito.when;
 
 import java.util.List;
 
@@ -32,7 +34,7 @@ class BaseControllerTest {
 
     @BeforeEach
     void setUp() {
-        controller = new BaseController<FooEntity, FooDTO, Integer>(service) {};
+        controller = new BaseController<>(service) {};
     }
 
     @Test

@@ -1,8 +1,13 @@
-package com.foo.cityhall.service;
+package com.foo.cityhall.service.user;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
+import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
 import java.util.Optional;
@@ -14,11 +19,12 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.mockito.quality.Strictness;
+
 import com.foo.cityhall.exception.BusinessException;
 import com.foo.cityhall.model.dto.user.UserDTO;
 import com.foo.cityhall.model.entity.user.User;
@@ -114,8 +120,9 @@ class UserServiceTester {
 		doAnswer(inv -> {
 			User e = inv.getArgument(0);
 			UserDTO d = inv.getArgument(1);
-			if (d.getUsername() != null)
+			if (d.getUsername() != null) {
 				e.setUsername(d.getUsername());
+			}
 			return null;
 		}).when(mapper).update(any(User.class), any(UserDTO.class));
 
@@ -145,12 +152,13 @@ class UserServiceTester {
 	}
 
 	@Test
-	void update_DoesNotChangePassword_WhenBlank() { 
+	void update_DoesNotChangePassword_WhenBlank() {
 		doAnswer(inv -> {
 			User e = inv.getArgument(0);
 			UserDTO d = inv.getArgument(1);
-			if (d.getUsername() != null)
+			if (d.getUsername() != null) {
 				e.setUsername(d.getUsername());
+			}
 			return null;
 		}).when(mapper).update(any(User.class), any(UserDTO.class));
 

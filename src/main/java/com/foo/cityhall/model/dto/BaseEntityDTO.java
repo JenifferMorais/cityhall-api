@@ -10,5 +10,5 @@ public abstract class BaseEntityDTO<T> {
 	public void setId(T id) {
 		this.id = id;
 	}
-	
+
 }

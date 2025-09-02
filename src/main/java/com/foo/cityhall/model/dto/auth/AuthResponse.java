@@ -1,7 +1,5 @@
 package com.foo.cityhall.model.dto.auth;
 
-import com.foo.cityhall.model.dto.BaseEntityDTO;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

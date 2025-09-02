@@ -13,7 +13,7 @@ import com.foo.cityhall.service.BaseService;
 @RequestMapping("users")
 public class UserController extends BaseController<User, UserDTO, Integer> {
 	public UserRepository repository;
-	
+
 	public UserController(BaseService<User, UserDTO, Integer> service) {
 		super(service);
 	}

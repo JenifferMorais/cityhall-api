@@ -3,8 +3,6 @@ package com.foo.cityhall.exceptionHandler;
 import java.time.Instant;
 import java.util.NoSuchElementException;
 
-import jakarta.servlet.http.HttpServletRequest;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
@@ -15,13 +13,15 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import com.foo.cityhall.exception.BusinessException;
 import com.foo.cityhall.security.CustomException;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
 	@ExceptionHandler(BusinessException.class)
 	public ResponseEntity<ErrorResponse> handleBusiness(BusinessException e, HttpServletRequest req) {
 		HttpStatus status = "credenciais inválidas".equalsIgnoreCase(e.getMessage()) ? HttpStatus.UNAUTHORIZED
-				: HttpStatus.UNPROCESSABLE_ENTITY; 
+				: HttpStatus.UNPROCESSABLE_ENTITY;
 		return response(status, e.getMessage(), req);
 	}
 
