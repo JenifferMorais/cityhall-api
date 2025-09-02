@@ -1,1 +1,1 @@
-CREATE UNIQUE INDEX idx_unique_username ON auth.user (username);
+CREATE UNIQUE INDEX idx_unique_username ON auth.users (username);
