@@ -1,4 +1,4 @@
-package com.foo.portifolio.allspring;
+package com.foo.cityhall;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
