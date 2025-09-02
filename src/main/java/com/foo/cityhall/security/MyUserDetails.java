@@ -1,7 +1,5 @@
 package com.foo.cityhall.security;
 
-import java.util.ArrayList;
-
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

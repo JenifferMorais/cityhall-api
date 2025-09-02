@@ -1,7 +1,5 @@
 package com.foo.cityhall.service.auth;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +9,6 @@ import com.foo.cityhall.model.dto.auth.AuthResponse;
 import com.foo.cityhall.model.dto.auth.TokenValidationResponse;
 import com.foo.cityhall.model.entity.user.User;
 import com.foo.cityhall.model.mapper.AuthMapper;
-import com.foo.cityhall.security.CustomException;
 import com.foo.cityhall.security.JwtTokenProvider;
 import com.foo.cityhall.service.user.UserService;
 
@@ -31,16 +28,17 @@ public class AuthService {
 	public AuthResponse login(AuthDTO request) {
 	    User creds = authMapper.toEntity(request);
 	    User persisted = userService.getByUsernameOrThrow(creds.getUsername());
-	    
-	    if (!passwordEncoder.matches(request.getPassword(), persisted.getPassword()))
-	        throw new BusinessException("credenciais inválidas");
-	    
+
+	    if (!passwordEncoder.matches(request.getPassword(), persisted.getPassword())) {
+			throw new BusinessException("credenciais inválidas");
+		}
+
 	    String token = jwtTokenProvider.createToken(persisted.getUsername());
 	    var userInfo = new AuthResponse.UserInfo(persisted.getId(), persisted.getUsername());
-	    
+
 	    return new AuthResponse(token, "Bearer", userInfo);
 	}
-	
+
 	public TokenValidationResponse validateToken(HttpServletRequest req) {
 	    String token = jwtTokenProvider.extractBearerOrThrow(req);
 	    Claims c = jwtTokenProvider.parseClaimsOrThrow(token);

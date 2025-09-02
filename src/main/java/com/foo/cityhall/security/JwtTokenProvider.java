@@ -28,7 +28,7 @@ public class JwtTokenProvider {
 	private String secretKey;
 
 	@Value("${security.jwt.token.expire-length}")
-	private long validityInMilliseconds ; 
+	private long validityInMilliseconds ;
 
 	@Autowired
 	private MyUserDetails myUserDetails;
@@ -42,14 +42,14 @@ public class JwtTokenProvider {
 	public String createToken(String subject) {
 		Date now = new Date();
 		Date exp = new Date(now.getTime() + validityInMilliseconds);
-		return Jwts.builder().setSubject(subject) 
-				.setIssuedAt(now).setExpiration(exp).signWith(key(), SignatureAlgorithm.HS256) 
+		return Jwts.builder().setSubject(subject)
+				.setIssuedAt(now).setExpiration(exp).signWith(key(), SignatureAlgorithm.HS256)
 				.compact();
 	}
 
 	public boolean validateToken(String token) {
 		try {
-			Jwts.parserBuilder() 
+			Jwts.parserBuilder()
 					.setSigningKey(key()).build().parseClaimsJws(token);
 			return true;
 		} catch (JwtException | IllegalArgumentException e) {
@@ -70,7 +70,7 @@ public class JwtTokenProvider {
 		UserDetails ud = myUserDetails.loadUserByUsername(getEmail(token));
 		return new UsernamePasswordAuthenticationToken(ud, "", ud.getAuthorities());
 	}
-	
+
 	public io.jsonwebtoken.Claims getClaims(String token) {
 	    return Jwts.parserBuilder()
 	            .setSigningKey(key())
@@ -79,16 +79,19 @@ public class JwtTokenProvider {
 	            .getBody();
 	}
 
-	
+
 	public String extractBearerOrThrow(HttpServletRequest req) {
 	    String h = req.getHeader("Authorization");
-	    if (h == null || h.isBlank())
-	        throw new CustomException("Cabeçalho Authorization ausente", HttpStatus.BAD_REQUEST);
-	    if (!h.startsWith("Bearer "))
-	        throw new CustomException("Authorization deve usar esquema Bearer", HttpStatus.BAD_REQUEST);
+	    if (h == null || h.isBlank()) {
+			throw new CustomException("Cabeçalho Authorization ausente", HttpStatus.BAD_REQUEST);
+		}
+	    if (!h.startsWith("Bearer ")) {
+			throw new CustomException("Authorization deve usar esquema Bearer", HttpStatus.BAD_REQUEST);
+		}
 	    String token = h.substring(7).trim();
-	    if (token.isEmpty())
-	        throw new CustomException("Token Bearer vazio", HttpStatus.BAD_REQUEST);
+	    if (token.isEmpty()) {
+			throw new CustomException("Token Bearer vazio", HttpStatus.BAD_REQUEST);
+		}
 	    return token;
 	}
 
@@ -102,7 +105,7 @@ public class JwtTokenProvider {
 	                .getBody();
 	    } catch (ExpiredJwtException e) {
 	        throw new CustomException("Token expirado", HttpStatus.UNAUTHORIZED);
-	    } catch (io.jsonwebtoken.security.SecurityException e) { 
+	    } catch (io.jsonwebtoken.security.SecurityException e) {
 	        throw new CustomException("Assinatura do token inválida", HttpStatus.UNAUTHORIZED);
 	    } catch (MalformedJwtException | UnsupportedJwtException e) {
 	        throw new CustomException("Token JWT malformado ou não suportado", HttpStatus.UNAUTHORIZED);

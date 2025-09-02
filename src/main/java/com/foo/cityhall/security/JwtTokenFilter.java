@@ -41,11 +41,11 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 
 		chain.doFilter(req, res);
 	}
-	
+
 	@Override
 	protected boolean shouldNotFilter(HttpServletRequest request) {
 	    String p = request.getServletPath();
-	    return p.startsWith("/auth")   
+	    return p.startsWith("/auth")
 	        || p.startsWith("/v3/api-docs")
 	        || p.startsWith("/swagger-ui")
 	        || "OPTIONS".equalsIgnoreCase(request.getMethod());

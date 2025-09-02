@@ -12,22 +12,22 @@ import jakarta.transaction.Transactional;
 
 @Transactional
 public abstract class BaseService<Entity extends BaseEntity<ID>, DTO extends BaseEntityDTO<ID>, ID> {
-	
+
 	public BaseService(BaseMapper<Entity, DTO> mapper, BaseRepository<Entity, ID> repository) {
 		super();
 		this.mapper = mapper;
 		this.repository = repository;
 	}
-	
+
 	protected BaseMapper<Entity,DTO> mapper;
 
 	protected BaseRepository<Entity, ID> repository;
-	
+
 	public Page<DTO> index(Pageable pageable){
 		return this.repository.findAll(pageable)
 				.map(this.mapper::toDto);
 	}
-	
+
 	public DTO create(DTO dto){
 		Entity e = this.repository.save(this.mapper.toEntity(dto));
 		return this.mapper.toDto(e);

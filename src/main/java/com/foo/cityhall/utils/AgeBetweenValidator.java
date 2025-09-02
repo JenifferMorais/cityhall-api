@@ -1,10 +1,11 @@
 package com.foo.cityhall.utils;
 
 
-import jakarta.validation.ConstraintValidator;
-import jakarta.validation.ConstraintValidatorContext;
 import java.time.LocalDate;
 import java.time.Period;
+
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 public class AgeBetweenValidator implements ConstraintValidator<AgeBetween, LocalDate> {
 
@@ -19,7 +20,9 @@ public class AgeBetweenValidator implements ConstraintValidator<AgeBetween, Loca
 
     @Override
     public boolean isValid(LocalDate value, ConstraintValidatorContext ctx) {
-        if (value == null) return true; 
+        if (value == null) {
+			return true;
+		}
         int age = Period.between(value, LocalDate.now()).getYears();
         return age >= min && age <= max;
     }

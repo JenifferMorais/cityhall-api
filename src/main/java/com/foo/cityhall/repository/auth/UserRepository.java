@@ -12,6 +12,6 @@ public interface UserRepository extends BaseRepository<User, Integer> {
 
 	public Optional<User> findByUsername(String username);
 	public boolean existsByUsername(String username);
-	
+
 
 }

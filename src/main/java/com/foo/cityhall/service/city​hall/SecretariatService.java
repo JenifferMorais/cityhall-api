@@ -13,7 +13,7 @@ import com.foo.cityhall.service.BaseService;
 public class SecretariatService extends BaseService<Secretariat, SecretariatDTO,
 Integer> {
 
-	public SecretariatService(BaseMapper<Secretariat, SecretariatDTO> mapper, 
+	public SecretariatService(BaseMapper<Secretariat, SecretariatDTO> mapper,
 			BaseRepository<Secretariat, Integer> repository) {
 		super(mapper, repository);
 	}

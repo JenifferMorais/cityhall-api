@@ -1,6 +1,5 @@
 package com.foo.cityhall.service.user;
 
-import org.springframework.data.domain.Example;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -26,10 +25,12 @@ public class UserService extends BaseService<User, UserDTO, Integer> {
 
 	@Override
 	public UserDTO create(UserDTO dto) {
-		if (userRepository.existsByUsername(dto.getUsername()))
+		if (userRepository.existsByUsername(dto.getUsername())) {
 			throw new BusinessException("username indisponível");
-		if (dto.getPassword() == null || dto.getPassword().isBlank())
+		}
+		if (dto.getPassword() == null || dto.getPassword().isBlank()) {
 			throw new BusinessException("senha obrigatória");
+		}
 
 		User e = mapper.toEntity(dto);
 		e.setPassword(passwordEncoder.encode(dto.getPassword()));
@@ -41,8 +42,9 @@ public class UserService extends BaseService<User, UserDTO, Integer> {
 	public UserDTO update(UserDTO dto) {
 		var e = userRepository.findById(dto.getId()).orElseThrow(() -> new BusinessException("usuário não encontrado"));
 		mapper.update(e, dto);
-		if (dto.getPassword() != null && !dto.getPassword().isBlank())
+		if (dto.getPassword() != null && !dto.getPassword().isBlank()) {
 			e.setPassword(passwordEncoder.encode(dto.getPassword()));
+		}
 		e = userRepository.save(e);
 		return mapper.toDto(e);
 	}

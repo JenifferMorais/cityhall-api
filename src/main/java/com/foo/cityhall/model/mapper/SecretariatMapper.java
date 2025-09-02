@@ -10,8 +10,9 @@ public class SecretariatMapper implements BaseMapper<Secretariat, SecretariatDTO
 
 	@Override
 	public SecretariatDTO toDto(Secretariat entity) {
-		if (entity == null)
+		if (entity == null) {
 			return null;
+		}
 
 		SecretariatDTO dto = new SecretariatDTO();
 		dto.setId(entity.getId());
@@ -22,8 +23,9 @@ public class SecretariatMapper implements BaseMapper<Secretariat, SecretariatDTO
 
 	@Override
 	public Secretariat toEntity(SecretariatDTO dto) {
-		if (dto == null)
+		if (dto == null) {
 			return null;
+		}
 
 		Secretariat entity = new Secretariat();
 		entity.setId(dto.getId());
@@ -34,8 +36,14 @@ public class SecretariatMapper implements BaseMapper<Secretariat, SecretariatDTO
 
 	@Override
 	public void update(Secretariat entity, SecretariatDTO dto) {
-		 if (dto == null || entity == null) return;
-	        if (dto.getName() != null)    entity.setName(dto.getName());
-	        if (dto.getAcronym() != null) entity.setAcronym(dto.getAcronym());
+		 if (dto == null || entity == null) {
+			return;
+		 }
+	        if (dto.getName() != null) {
+				entity.setName(dto.getName());
+			}
+	        if (dto.getAcronym() != null) {
+				entity.setAcronym(dto.getAcronym());
+			}
 	}
 }
