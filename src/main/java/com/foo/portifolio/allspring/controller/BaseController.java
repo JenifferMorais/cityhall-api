@@ -16,13 +16,12 @@ import com.foo.portifolio.allspring.service.BaseService;
 
 @Service
 public abstract class BaseController<Entity extends BaseEntity<ID>, DTO extends BaseEntityDTO<ID>, ID> {
+	protected BaseService<Entity, DTO, ID> service;
 
 	public BaseController(BaseService<Entity, DTO, ID> service) {
 		super();
 		this.service = service;
 	}
-
-	private BaseService<Entity, DTO, ID> service;
 
 	@GetMapping
 	public Page<DTO> index(Pageable pageable) {

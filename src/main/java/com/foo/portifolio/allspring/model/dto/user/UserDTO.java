@@ -1,22 +1,20 @@
 package com.foo.portifolio.allspring.model.dto.user;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.foo.portifolio.allspring.model.dto.BaseEntityDTO;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
+import lombok.ToString;
+
+@Data
 public class UserDTO extends BaseEntityDTO<Integer> {
-	private String password;
+
+	private Integer id;
 	private String username;
 	
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @Schema(accessMode = Schema.AccessMode.WRITE_ONLY)
+    @ToString.Exclude
+	private String password;
 }

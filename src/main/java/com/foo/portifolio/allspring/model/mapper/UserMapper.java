@@ -11,8 +11,8 @@ public class UserMapper implements BaseMapper<User, UserDTO> {
 	@Override
 	public User toEntity(UserDTO dto) {
 		User user = new User();
-		user.setPassword(dto.getPassword());
 		user.setUsername(dto.getUsername());
+		user.setPassword(dto.getPassword());
 		return user;
 	}
 

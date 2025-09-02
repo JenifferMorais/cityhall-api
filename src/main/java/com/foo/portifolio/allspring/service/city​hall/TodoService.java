@@ -1,15 +1,15 @@
-package com.foo.portifolio.allspring.service.todo;
+package com.foo.portifolio.allspring.service.city​hall;
 
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.foo.portifolio.allspring.model.dto.todo.TodoDTO;
-import com.foo.portifolio.allspring.model.entity.todo.State;
-import com.foo.portifolio.allspring.model.entity.todo.Todo;
+import com.foo.portifolio.allspring.model.dto.city​hall.TodoDTO;
+import com.foo.portifolio.allspring.model.entity.city​hall.State;
+import com.foo.portifolio.allspring.model.entity.city​hall.Todo;
 import com.foo.portifolio.allspring.model.mapper.BaseMapper;
 import com.foo.portifolio.allspring.repository.BaseRepository;
-import com.foo.portifolio.allspring.repository.todos.StateRepository;
+import com.foo.portifolio.allspring.repository.city​hall.StateRepository;
 import com.foo.portifolio.allspring.service.BaseService;
 
 @Service

@@ -1,4 +1,4 @@
-package com.foo.portifolio.allspring.model.dto.todo;
+package com.foo.portifolio.allspring.model.dto.city​hall;
 
 import java.time.LocalDateTime;
 

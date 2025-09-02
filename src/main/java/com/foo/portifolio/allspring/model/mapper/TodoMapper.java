@@ -2,9 +2,9 @@ package com.foo.portifolio.allspring.model.mapper;
 
 import org.springframework.stereotype.Service;
 
-import com.foo.portifolio.allspring.model.dto.todo.TodoDTO;
-import com.foo.portifolio.allspring.model.entity.todo.State;
-import com.foo.portifolio.allspring.model.entity.todo.Todo;
+import com.foo.portifolio.allspring.model.dto.city​hall.TodoDTO;
+import com.foo.portifolio.allspring.model.entity.city​hall.State;
+import com.foo.portifolio.allspring.model.entity.city​hall.Todo;
 
 @Service
 public class TodoMapper implements BaseMapper<Todo, TodoDTO>{

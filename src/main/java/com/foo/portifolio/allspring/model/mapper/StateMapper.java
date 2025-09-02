@@ -2,8 +2,8 @@ package com.foo.portifolio.allspring.model.mapper;
 
 import org.springframework.stereotype.Service;
 
-import com.foo.portifolio.allspring.model.dto.todo.StateDTO;
-import com.foo.portifolio.allspring.model.entity.todo.State;
+import com.foo.portifolio.allspring.model.dto.city​hall.StateDTO;
+import com.foo.portifolio.allspring.model.entity.city​hall.State;
 
 @Service
 public class StateMapper implements BaseMapper<State, StateDTO>{
