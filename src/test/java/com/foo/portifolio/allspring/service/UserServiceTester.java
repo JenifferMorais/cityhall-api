@@ -20,11 +20,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
-import com.foo.portifolio.allspring.model.dto.user.UserDTO;
-import com.foo.portifolio.allspring.model.entity.user.User;
-import com.foo.portifolio.allspring.model.mapper.UserMapper;
-import com.foo.portifolio.allspring.repository.auth.UserRepository;
-import com.foo.portifolio.allspring.service.user.UserService;
+import com.foo.cityhall.model.dto.user.UserDTO;
+import com.foo.cityhall.model.entity.user.User;
+import com.foo.cityhall.model.mapper.UserMapper;
+import com.foo.cityhall.repository.auth.UserRepository;
+import com.foo.cityhall.service.user.UserService;
 
 @SpringBootTest
 public class UserServiceTester {
